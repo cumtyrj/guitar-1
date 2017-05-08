@@ -1,6 +1,7 @@
 # guitar1.0
 吉他1.00
-
+项目架构：SpringMVC+Mybatis+SQLite
+IDE:Eclipse
 ## 演示
 
 以下是效果图：
