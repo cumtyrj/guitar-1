@@ -5,13 +5,13 @@
 
 以下是效果图：
 
-![效果图](images/1.png)
+![效果图](images/1.PNG)
 
-![效果图](images/2.png)
+![效果图](images/2.PNG)
 
 ## 目录结构
 
-![目录结构](src/assets/imgs/3.png)
+![目录结构](images/3.PNG)
 
 ## 用法
 
