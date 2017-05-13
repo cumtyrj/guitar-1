@@ -2,7 +2,13 @@
 # guitar2.0
 吉他2.00
 项目架构：SpringMVC+Mybatis+SQLite
+
 IDE:Eclipse
+
+## 1.0版本
+
+请查看分支guitar-v2
+
 ## 演示
 
 以下是效果图：
