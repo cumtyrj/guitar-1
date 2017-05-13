@@ -1,4 +1,4 @@
-# guitar1.0
+# guitar2.0
 吉他1.00
 项目架构：SpringMVC+Mybatis+SQLite
 IDE:Eclipse
@@ -6,13 +6,11 @@ IDE:Eclipse
 
 以下是效果图：
 
-![效果图](images/1.PNG)
-
-![效果图](images/2.PNG)
+![效果图](images/2-1.PNG)
 
 ## 目录结构
 
-![目录结构](images/3.PNG)
+![目录结构](images/2-2.PNG)
 
 ## 用法
 
