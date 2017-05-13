@@ -5,9 +5,11 @@
 
 IDE:Eclipse
 
-## 1.0版本
+## 1.0旧版本
 
-请查看分支guitar-v2
+请查看分支guitar-v1
+
+[guitar-v1](https://github.com/mahui53541/guitar/tree/guitar-v1) 
 
 ## 演示
 
