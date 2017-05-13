@@ -1,11 +1,8 @@
 package com.github.mahui53541.guitar.dao.mapper;
 
-import org.apache.ibatis.jdbc.SQL;
-import com.github.mahui53541.guitar.domain.Guitar;
-
 public class GuitarDynaSqlProvider {
 	// 动态搜索
-	public String search(Guitar guitar){
+	/*public String search(Guitar guitar){
 		return new SQL(){
 			{
 				SELECT("*");		
@@ -38,5 +35,5 @@ public class GuitarDynaSqlProvider {
 				}
 			}
 		}.toString();
-	}
+	}*/
 }
