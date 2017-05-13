@@ -1,5 +1,6 @@
+# guitar升级了
 # guitar2.0
-吉他1.00
+吉他2.00
 项目架构：SpringMVC+Mybatis+SQLite
 IDE:Eclipse
 ## 演示
@@ -20,7 +21,7 @@ IDE:Eclipse
 
 ## 更新
 
-打开命令行，进入guitar1.0根目录，执行以下命令：
+打开命令行，进入guitar2.0根目录，执行以下命令：
 
 	git pull
 
