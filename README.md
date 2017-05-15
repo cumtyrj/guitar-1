@@ -17,6 +17,13 @@ IDE:Eclipse
 
 ![效果图](images/2-1.PNG)
 
+一下是测试代码以及演示效果
+
+![测试代码](images/2-3.PNG)
+
+![控制台输出](images/2-4.PNG)
+
+
 ## 目录结构
 
 ![目录结构](images/2-2.PNG)
