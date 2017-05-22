@@ -1,32 +1,54 @@
 package com.github.mahui53541.guitar.dao;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
 
 import com.github.mahui53541.guitar.pojo.Guitar;
 
+/**
+ *
+ * @author 马辉
+ * @since JDK1.8
+ * @history 2017年5月22日下午6:02:16 马辉 新建
+ */
 public interface GuitarDao {
 	
-	@Select("select * from guitar")
-	//@SelectProvider(type=GuitarDynaSqlProvider.class,method="search")
-	@Results({
-		@Result(id=true,column="id",property="id"),
-		@Result(column="price",property="price"),
-		@Result(column="builder",property="builder"),
-		@Result(column="model",property="model"),
-		@Result(column="type",property="type"),
-		@Result(column="back_wood",property="backWood"),
-		@Result(column="top_wood",property="topWood"),
-		@Result(column="num_strings",property="numStrings"),
-		@Result(column="builder",property="spec.builder"),
-		@Result(column="model",property="spec.model"),
-		@Result(column="type",property="spec.type"),
-		@Result(column="back_wood",property="spec.backWood"),
-		@Result(column="top_wood",property="spec.topWood"),
-		@Result(column="num_strings",property="spec.numStrings")
-	})
-	public List<Guitar> findAll();
+	
+	/**
+	 * @method 查询所有吉他
+	 * @author mahui
+	 * @return List<Guitar>
+	 */
+	List<Guitar> findAll();
+	
+	/**
+	 * @method 新增吉他
+	 * @author mahui
+	 * @return void
+	 */
+	void add(Guitar guitar);
+	
+	/**
+	 * @method 更新吉他
+	 * @param guitar
+	 * @author mahui
+	 * @return void
+	 */
+	void update(Guitar guitar);
+	
+	/**
+	 * @method 删除吉他
+	 * @param guitar
+	 * @author mahui
+	 * @return void
+	 */
+	void delete (String id);
+	
+	/**
+	 * @method 查询个数
+	 * @param guitar
+	 * @author mahui
+	 * @return long
+	 */
+	int count ();
 	
 }

@@ -23,16 +23,52 @@
 	 <!-- 扫描org.fkit包下面的java文件，有Spring的相关注解的类，则把这些类注册为Spring的bean -->
     <context:component-scan base-package="com.github.mahui53541.guitar"/>
     
-	<!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
-	<context:property-override location="/WEB-INF/db.properties"/>
-
+	 
 	<!-- 配置c3p0数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
 	
-	<!-- 配置SqlSessionFactory，org.mybatis.spring.SqlSessionFactoryBean是Mybatis社区开发用于整合Spring的bean -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
-	    p:dataSource-ref="dataSource"/>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.github.mahui53541.guitar.dao" />
+    </bean>
+    
+	<bean id="vendorProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="properties">
+	    <props>
+	      <prop key="SQL Server">sqlserver</prop>
+	      <prop key="DB2">db2</prop>
+	      <prop key="SQLite">sqlite</prop>
+	      <prop key="Oracle">oracle</prop>
+	      <prop key="MySQL">mysql</prop>
+	      <prop key="H2">h2</prop>
+	    </props>
+	  </property>
+	</bean>
 	
+	<bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+	  <property name="properties" ref="vendorProperties"/>
+	</bean>
+	<!-- 配置SqlSessionFactory，org.mybatis.spring.SqlSessionFactoryBean是Mybatis社区开发用于整合Spring的bean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="databaseIdProvider" ref="databaseIdProvider" />
+        <property name="mapperLocations" value="classpath*:/com/github/mahui53541/guitar/mapper/**/*.xml" />
+        <property name="plugins">
+			<list>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+					<property name="properties">
+						<value>
+							helperDialect=mysql
+							reasonable=true
+							supportMethodsArguments=true
+							returnPageInfo=check
+							params=count=countSql
+						</value>
+					</property>
+				</bean>
+			</list>
+		</property>
+    </bean>
 	<!-- JDBC事务管理器 -->
 	<bean id="transactionManager" 
 	class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
@@ -40,5 +76,14 @@
 	
 	<!-- 启用支持annotation注解方式事务管理 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
+	<!-- 加载mysql数据源 -->
+	<beans profile="mysql">  
+       <!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
+		<context:property-override location="/WEB-INF/mysql-db.properties"/>
+    </beans>
+    <!-- 加载sqlite数据源 -->
+	<beans profile="sqlite">  
+       <!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
+		<context:property-override location="/WEB-INF/sqlite-db.properties"/>
+    </beans>
 </beans>
