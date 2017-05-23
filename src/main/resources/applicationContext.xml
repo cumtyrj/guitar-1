@@ -37,7 +37,7 @@
 	      <prop key="SQL Server">sqlserver</prop>
 	      <prop key="DB2">db2</prop>
 	      <prop key="SQLite">sqlite</prop>
-	      <prop key="Oracle">oracle</prop>
+	      <prop key="SQLite">oracle</prop>
 	      <prop key="MySQL">mysql</prop>
 	      <prop key="H2">h2</prop>
 	    </props>
@@ -79,11 +79,11 @@
 	<!-- 加载mysql数据源 -->
 	<beans profile="mysql">  
        <!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
-		<context:property-override location="/WEB-INF/mysql-db.properties"/>
+		<context:property-override location="classpath*:mysql-db.properties"/>
     </beans>
     <!-- 加载sqlite数据源 -->
 	<beans profile="sqlite">  
        <!-- 使用PropertyOverrideConfigurer后处理器加载数据源参数 -->
-		<context:property-override location="/WEB-INF/sqlite-db.properties"/>
+		<context:property-override location="classpath*:sqlite-db.properties"/>
     </beans>
 </beans>
